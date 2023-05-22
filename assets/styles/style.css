@@ -54,9 +54,13 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+.edit-bar, .edit-btn {
+	display: none;
+}
 header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin: 50px 0
 }
 section {
@@ -109,7 +113,7 @@ li:hover {
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 #introduction img {
 	display: block;
@@ -129,7 +133,7 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin: 1em;
 }
 .gallery {
 	width: 100%;
@@ -239,10 +243,69 @@ footer nav ul {
 	color: #FFFFFF;
 }
 
+/*** EDIT ***/
+
 .edit .logout-btn {
 	display: list-item;
 }
 
 .edit .login-btn {
 	display: none;
+}
+
+.edit header {
+	margin-top: 100px;
+}
+
+.edit .edit-bar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+}
+
+.edit-mode {
+	color: white;
+	margin: 0px 20px;
+}
+
+.publish {
+	padding: 10px 20px;
+	background-color: white;
+	border-radius: 600px;
+	color: black;
+}
+
+.edit .edit-btn {
+	display: flex;
+	align-items: center;
+	width: 80%;
+	margin: 15px auto;
+}
+
+.edit-btn i {
+	margin-right: 10px;
+}
+
+.portfolio-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.portfolio-title .edit-btn {
+	position: absolute;
+	transform: translateX(165px);
+	width: auto;
+	margin: 0;
+}
+
+.edit-btn:hover {
+	color: #B1663C;
+	cursor: pointer;
 }
