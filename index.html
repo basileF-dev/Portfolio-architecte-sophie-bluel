@@ -10,8 +10,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/styles/style.css">
-	<script src="assets/scripts/works.js" type="module"></script>
-	<script src="assets/scripts/edit.js" type="module"></script>
 </head>
 <body class="body">
 <header>
@@ -47,7 +45,7 @@
 	<section id="portfolio">
 		<div class="portfolio-title">
 			<h2>Mes Projets</h2>
-			<div class="edit-btn"><i class="fa-regular fa-pen-to-square fa-lg"></i>modifier</div>
+			<div class="edit-btn" id="edit-btn"><i class="fa-regular fa-pen-to-square fa-lg"></i>modifier</div>
 		</div>
 		<div class="works-update">Mettre à jour les projets</div>
 		<div class="filters">
@@ -116,8 +114,55 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+	<script src="assets/scripts/works.js" type="module"></script>
 </main>
-
+<dialog id="modal">
+	<form action="#" method="dialog" id="gallery-modal">	
+		<div class="modal-nav">
+			<button class="close"><i class="fa-regular fa-xmark" style="color: #000000;"></i></button>
+		</div>
+		<h3>Galerie photo</h3>
+		<div id="modal-gallery"></div>
+		<hr>
+		<div class="modal-btns">
+			<button id="add-work-btn">Ajouter une photo</button>
+			<button id="delete-work-btn">Supprimer la galerie</button>
+		</div>
+	</form>
+	<form action="#" method="dialog" id="add-modal">
+		<div class="modal-nav">
+			<button class="close"><i class="fa-regular fa-xmark" style="color: #000000;"></i></button>
+			<button id="return"><i class="fa-regular fa-arrow-left" style="color: #000000;"></i></button>
+		</div>
+		<h3>Ajout photo</h3>
+		<div id="modal-add-container">
+			<div id="upload-img-container">
+				<div class="upload-container">
+					<i class="fa-regular fa-image"></i>
+					<input type="file" accept="image/png, image/jpeg" id="upload-input">
+					<button id="add-img-btn">+ Ajouter photo</button>
+			 		<p>jpg, png : 4mo max</p>
+				</div>
+			</div>
+			<label for="title-add">Titre</label>
+			<input type="text" name="title-add" id="title-add">
+			<label for="category-add">Catégorie</label>
+			<div class="select-container">
+				<select name="category-add" id="category-add">
+					<option value=""></option>
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hotels & restaurants</option>
+				</select>
+				<i class="fa-regular fa-chevron-down"></i>
+			</div>
+		</div>
+		<hr>
+		<div class="modal-btns">
+			<button id="send-work-btn" class="unvalid-content">Valider</button>
+		</div>
+	</form>
+</dialog>
 <footer>
 	<nav>
 		<ul>
@@ -125,5 +170,6 @@
 		</ul>
 	</nav>
 </footer>
+<script src="assets/scripts/edit.js" type="module"></script>
 </body>
 </html>

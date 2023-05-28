@@ -29,13 +29,6 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-	line-height: 1;
-    height: 100vh;
-}
 ol, ul {
 	list-style: none;
 }
@@ -53,6 +46,11 @@ table {
 }
 /** end reset css**/
 body {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+	line-height: 1;
+    height: 100vh;
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
@@ -65,7 +63,7 @@ header {
 	margin: 50px 0
 }
 section {
-	margin: 100px 0
+	margin-top: 50px;
 }
 
 h1{
@@ -100,6 +98,9 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 	color: black;
+}
+nav img {
+	width: 20px;
 }
 
 li:hover {
@@ -142,6 +143,13 @@ h2 {
     margin: 2em 0 1em 0;
 }
 
+#login-message {
+	text-align: center;
+	margin-top: 30px;
+	color: #B1663C;
+	font-size: 16px;
+}
+
 #btn-se-connecter {
 	font-family: 'Syne';
 	font-weight: 700;
@@ -153,11 +161,15 @@ h2 {
 	border-radius: 60px ;
 }
 
-#login-message {
+#password-asking {
 	text-align: center;
-	margin-top: 30px;
-	color: #B1663C;
-	font-size: 16px;
+	margin: auto;
+	padding: 0;
+	width: fit-content;
+	border: none;
+	border-bottom: 1px solid black;
+	background-color: white;
+	font-size: 14px;
 }
 
 /*** footer ***/

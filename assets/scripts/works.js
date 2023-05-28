@@ -1,22 +1,33 @@
+//Récuperation des projets et categories//
+
 let works = window.localStorage.getItem('works');
 
 if(works === null) {
-    const response = await fetch('http://localhost:5678/api/works');
-    works = await response.json();
 
-    const valeurWorks = JSON.stringify(works);
-    window.localStorage.setItem('works', valeurWorks);
+    works = await updateWorks();
 }else{
     works = JSON.parse(works);
 }
 
-const worksUpdate = document.querySelector(".works-update")
+let categories = window.localStorage.getItem('categories');
 
-worksUpdate.addEventListener("click", () => {
-    window.localStorage.removeItem('works');
-})
+if(categories === null) {
+    
+    categories = await updateCategories();
 
-function generateWorks(works){
+}else{
+    categories = JSON.parse(categories);
+}
+
+//generation des projets et des filtres //
+
+generateWorks(works);
+
+generateFiltersAndEventListeners(categories);
+
+//functions//
+
+export function generateWorks(works){
 
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = "";
@@ -38,50 +49,99 @@ function generateWorks(works){
     }
 }
 
-generateWorks(works);
-
-const tousFilter = document.querySelector(".tous");
-const objetsFilter = document.querySelector(".objets");
-const appartementsFilter = document.querySelector(".appartements");
-const hotelsRestauFilter = document.querySelector(".hotelsRestaurents");
-
 function clearFilters() {
-    tousFilter.classList.remove("activ");
-    objetsFilter.classList.remove("activ");
-    appartementsFilter.classList.remove("activ");
-    hotelsRestauFilter.classList.remove("activ");
+
+    const filters = document.querySelector(".filters");
+    const children = filters.children;
+    for(let i = 0; i < children.length; i++) {
+        const child = children[i];
+        child.classList.remove("activ");
+    }
 };
 
+function generateFiltersAndEventListeners(categories) {
+    const filters = document.querySelector(".filters");
+    filters.innerHTML = "";
+    const filterTous = document.createElement("div");
+    filterTous.className = "filter tous";
+    filterTous.innerText = "Tous";
+    filters.appendChild(filterTous);
 
-tousFilter.addEventListener("click", () => { 
-    clearFilters();
-    tousFilter.classList.add("activ");
-    generateWorks(works) 
-})
+    for(let i = 0; i < categories.length; i++) {
+        const categoryName = categories[i].name;
+        const filter = document.createElement("div");
+        filter.className = `filter ${(categories[i].name).toLowerCase()}`;
+        filter.innerText = categoryName;
+        filters.appendChild(filter);
+    }
 
-objetsFilter.addEventListener("click", () => {
-    clearFilters();
-    objetsFilter.classList.add("activ");
-    const objetsArray = works.filter((work) => {
-        return work.categoryId == 1;
-    });
-    generateWorks(objetsArray);
-})
+    const tousFilter = document.querySelector(".tous");
+    const objetsFilter = document.querySelector(".objets");
+    const appartementsFilter = document.querySelector(".appartements");
+    const hotelsRestauFilter = document.querySelector(".restaurants");
 
-appartementsFilter.addEventListener("click", () => {
-    clearFilters();
-    appartementsFilter.classList.add("activ");
-    const appartementsArray = works.filter((work) => {
-        return work.categoryId == 2;
+    tousFilter.addEventListener("click", () => { 
+        clearFilters();
+        tousFilter.classList.add("activ");
+        generateWorks(works) 
     })
-    generateWorks(appartementsArray)
-})
 
-hotelsRestauFilter.addEventListener("click", () => {
-    clearFilters();
-    hotelsRestauFilter.classList.add("activ");
-    const hotelsRestauArray = works.filter((work) => {
-        return work.categoryId == 3;
+    objetsFilter.addEventListener("click", () => {
+        clearFilters();
+        objetsFilter.classList.add("activ");
+        const objetsArray = works.filter((work) => {
+            return work.categoryId == 1;
+        });
+        generateWorks(objetsArray);
     })
-    generateWorks(hotelsRestauArray)
+
+    appartementsFilter.addEventListener("click", () => {
+        clearFilters();
+        appartementsFilter.classList.add("activ");
+        const appartementsArray = works.filter((work) => {
+            return work.categoryId == 2;
+        })
+        generateWorks(appartementsArray)
+    })
+
+    hotelsRestauFilter.addEventListener("click", () => {
+        clearFilters();
+        hotelsRestauFilter.classList.add("activ");
+        const hotelsRestauArray = works.filter((work) => {
+            return work.categoryId == 3;
+        })
+        generateWorks(hotelsRestauArray)
+    })
+}
+
+export async function updateWorks() {
+    const response = await fetch('http://localhost:5678/api/works');
+    const newWorks = await response.json();
+    window.localStorage.removeItem('works');
+    const valueWorks = JSON.stringify(newWorks);
+    window.localStorage.setItem('works', valueWorks);
+    return await newWorks;
+}
+
+export async function updateCategories() {
+    const response = await fetch('http://localhost:5678/api/categories');
+    const newCategories = await response.json();
+    window.localStorage.removeItem('categories');
+    const valeurCategories = JSON.stringify(newCategories);
+    window.localStorage.setItem('categories', valeurCategories);
+    return await newCategories
+}
+
+//mise a jour des données//
+
+const worksUpdate = document.querySelector(".works-update")
+
+worksUpdate.addEventListener("click", async () => {
+    const newWorks = await updateWorks()
+    works = await newWorks;
+    generateWorks(await newWorks);
+    const newCategories = await updateCategories();
+    categories = await newCategories;
+    generateFiltersAndEventListeners(await newCategories);
+    clearFilters();
 })
