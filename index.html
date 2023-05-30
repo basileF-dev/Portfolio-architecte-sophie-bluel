@@ -7,14 +7,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 <body class="body">
 <header>
 	<div class="edit-bar">
-		<i class="fa-regular fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
+		<img class="pen-to-square" src="./assets/icons/white-pen-to-square.svg" alt="">
 		<div class="edit-mode">Mode édition</div>
 		<div class="publish">publier les changements</div>
 	</div>
@@ -32,8 +31,8 @@
 <main>
 	<section id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-			<div class="edit-btn"><i class="fa-regular fa-pen-to-square fa-lg"></i>modifier</div>
+			<img class="intro-img" src="./assets/images/sophie-bluel.png" alt="">
+			<div class="edit-btn"><img class="pen-to-square" src="./assets/icons/pen-to-square.svg" alt="">modifier</div>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -45,7 +44,7 @@
 	<section id="portfolio">
 		<div class="portfolio-title">
 			<h2>Mes Projets</h2>
-			<div class="edit-btn" id="edit-btn"><i class="fa-regular fa-pen-to-square fa-lg"></i>modifier</div>
+			<div class="edit-btn" id="edit-btn"><img class="pen-to-square" src="./assets/icons/pen-to-square.svg" alt=""> modifier</div>
 		</div>
 		<div class="works-update">Mettre à jour les projets</div>
 		<div class="filters">
@@ -119,7 +118,7 @@
 <dialog id="modal">
 	<form action="#" method="dialog" id="gallery-modal">	
 		<div class="modal-nav">
-			<button class="close"><i class="fa-regular fa-xmark" style="color: #000000;"></i></button>
+			<button class="close"><img src="./assets/icons/X-mark.svg" alt="bouton fermer"></button>
 		</div>
 		<h3>Galerie photo</h3>
 		<div id="modal-gallery"></div>
@@ -131,14 +130,14 @@
 	</form>
 	<form action="#" method="dialog" id="add-modal">
 		<div class="modal-nav">
-			<button class="close"><i class="fa-regular fa-xmark" style="color: #000000;"></i></button>
-			<button id="return"><i class="fa-regular fa-arrow-left" style="color: #000000;"></i></button>
+			<button class="close"><img src="./assets/icons/X-mark.svg" alt="bouton fermer"></button>
+			<button id="return"><img src="assets/icons/Arrow_Back.svg" alt="bouton retour"></button>
 		</div>
 		<h3>Ajout photo</h3>
 		<div id="modal-add-container">
 			<div id="upload-img-container">
 				<div class="upload-container">
-					<i class="fa-regular fa-image"></i>
+					<img src="./assets/icons/paysage.svg" class="paysage-icon" alt="">
 					<input type="file" accept="image/png, image/jpeg" id="upload-input">
 					<button id="add-img-btn">+ Ajouter photo</button>
 			 		<p>jpg, png : 4mo max</p>
@@ -154,7 +153,7 @@
 					<option value="2">Appartements</option>
 					<option value="3">Hotels & restaurants</option>
 				</select>
-				<i class="fa-regular fa-chevron-down"></i>
+				<img class="chevron" src="./assets/icons/chevron.svg" alt="bouton dérouler">
 			</div>
 		</div>
 		<hr>

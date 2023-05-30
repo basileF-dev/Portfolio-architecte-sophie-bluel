@@ -120,7 +120,7 @@ li:hover {
 #introduction figure {
 	flex: 1;
 }
-#introduction img {
+.intro-img {
 	display: block;
 	margin: auto;
 	width: 80%;
@@ -278,7 +278,7 @@ footer nav li:hover, .works-update:hover, .filter:hover, .edit-btn:hover, button
 
 .edit-mode {
 	color: white;
-	margin: 0px 20px;
+	margin: 0px 20px 0px 5px;
 }
 
 .publish {
@@ -295,8 +295,9 @@ footer nav li:hover, .works-update:hover, .filter:hover, .edit-btn:hover, button
 	margin: 15px auto;
 }
 
-.edit-btn i {
-	margin-right: 10px;
+.pen-to-square {
+	margin-right: 8px;
+	width: 18px;
 }
 
 .portfolio-title {
@@ -357,7 +358,7 @@ footer nav li:hover, .works-update:hover, .filter:hover, .edit-btn:hover, button
 }
 
 #modal-gallery {
-	padding: 50px 100px;
+	padding: 30px 100px 50px 100px;
 	display: flex;
 	flex-wrap: wrap;
 	gap: calc(10% / 4);
@@ -367,32 +368,31 @@ footer nav li:hover, .works-update:hover, .filter:hover, .edit-btn:hover, button
 	width: 18%;
 }
 
-#modal-gallery img {
+.modal-work-image {
 	width: 100%;
 }
 
 #modal .btn-container {
-	position: relative;
-	top: 32px;
 	display: flex;
-	flex-direction: row-reverse;
-	margin-right: 4px;
+	transform: translateY(calc(100% + 4px));
+	justify-content: flex-end;
 }
 
-#modal .fa-arrows-up-down-left-right {
+.drag-btn {
 	display: none;
 }
 
-#modal figure:hover .fa-arrows-up-down-left-right {
+#modal figure:hover .drag-btn {
 	display: block;
 }
 
-#modal-gallery i {
+.delete-btn, .drag-btn{
 	color: white;
 	background-color: black;
 	padding: 5px;
 	border-radius: 4px;
 	margin-right: 4px;
+	width: 16px;
 }
 
 #modal hr {
@@ -447,7 +447,7 @@ footer nav li:hover, .works-update:hover, .filter:hover, .edit-btn:hover, button
 	margin: 35px 0px 30px 0px;
 }
 
-#upload-img-container img{
+.image-add {
 	height: 200px;
 	object-fit: cover;
 }
@@ -461,10 +461,9 @@ footer nav li:hover, .works-update:hover, .filter:hover, .edit-btn:hover, button
 	margin: 10px auto 20px auto;
 }
 
-.fa-image {
-	font-size: 60px;
-	color: #B9C5CC;
+.paysage-icon {
 	margin: 30px auto 20px auto;
+	width: 70px;
 }
 
 #upload-input {
@@ -504,12 +503,12 @@ footer nav li:hover, .works-update:hover, .filter:hover, .edit-btn:hover, button
 
 .select-container {
 	display: flex;
-	width: calc(100% + 14px);
+	width: calc(100% + 13px);
 }
 
-.fa-chevron-down {
+.chevron {
 	position: relative;
-	transform: translate(-30px, 18px);
+	transform: translate(-30px, -10px);
 	z-index: -1;
 }
 

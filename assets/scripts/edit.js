@@ -203,22 +203,23 @@ function generateModalWorks(works){
 
         const figure = document.createElement("figure");
         const btnContainer = document.createElement("div");
-        const deleteBtn = document.createElement("i");
-        const dragBtn = document.createElement("i");
+        const deleteBtn = document.createElement("img");
+        const dragBtn = document.createElement("img");
         const image = document.createElement("img");
         const figureCaption = document.createElement("figcaption");
 
         btnContainer.classList.add("btn-container");
-        deleteBtn.classList.add("fa-solid");
-        deleteBtn.classList.add("fa-trash-can")
-        dragBtn.classList.add("fa-regular");
-        dragBtn.classList.add("fa-arrows-up-down-left-right");
+        dragBtn.src = "./assets/icons/arrow-TRBL.svg";
+        dragBtn.classList.add("drag-btn");
+        deleteBtn.src = "./assets/icons/trash.svg";
+        deleteBtn.classList.add("delete-btn");
+        image.classList.add("modal-work-image");
         image.src = work.imageUrl;
         figureCaption.innerText = "éditer";
         deleteBtn.dataset.id = i;
 
-        btnContainer.appendChild(deleteBtn);
         btnContainer.appendChild(dragBtn);
+        btnContainer.appendChild(deleteBtn);
         figure.appendChild(btnContainer);
         figure.appendChild(image);
         figure.appendChild(figureCaption);
@@ -228,7 +229,7 @@ function generateModalWorks(works){
 
 function addDeleteEventListeners(worksArray) {
 
-    const delWorkBtn = document.querySelectorAll(".fa-trash-can");
+    const delWorkBtn = document.querySelectorAll(".delete-btn");
 
     for(let i = 0; i < worksArray.length; i++) {
         delWorkBtn[i].addEventListener("click", async (event) => {
