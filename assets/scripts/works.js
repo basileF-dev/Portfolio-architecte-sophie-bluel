@@ -70,7 +70,7 @@ function generateFiltersAndEventListeners(categories) {
     for(let i = 0; i < categories.length; i++) {
         const categoryName = categories[i].name;
         const filter = document.createElement("div");
-        filter.className = `filter ${(categories[i].name).toLowerCase()}`;
+        filter.className = `filter ${(categoryName).toLowerCase()}`;
         filter.innerText = categoryName;
         filters.appendChild(filter);
     }

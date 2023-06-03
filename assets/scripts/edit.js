@@ -233,17 +233,19 @@ function addDeleteEventListeners(worksArray) {
 
     for(let i = 0; i < worksArray.length; i++) {
         delWorkBtn[i].addEventListener("click", async (event) => {
-            const id = event.target.dataset.id;
-            const delId = worksArray[id].id;
-            const response = await fetch(`http://localhost:5678/api/works/${delId}`, {
-                method: "DELETE",
-                headers: {"Authorization": `Bearer ${token}`},
-            })
-            const newWorks = await updateWorks();
-            works = await newWorks;
-            generateModalWorks(await newWorks);
-            generateWorks(await newWorks);
-            addDeleteEventListeners(await newWorks);
+            if(confirm(`êtes vous sûr de suprimer ${worksArray[i].title} ?`) == true) {
+                const id = event.target.dataset.id;
+                const delId = worksArray[id].id;
+                const response = await fetch(`http://localhost:5678/api/works/${delId}`, {
+                    method: "DELETE",
+                    headers: {"Authorization": `Bearer ${token}`},
+                })
+                const newWorks = await updateWorks();
+                works = await newWorks;
+                generateModalWorks(await newWorks);
+                generateWorks(await newWorks);
+                addDeleteEventListeners(await newWorks);
+            }
         })
     }
 }
